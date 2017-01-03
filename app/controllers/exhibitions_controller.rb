@@ -1,7 +1,11 @@
 class ExhibitionsController < ApplicationController
 
 	def index
-		@exhibitions = Exhibition.all
+		if params[:user_id]
+			@exhibitions = Exhibition.find(params[:user_id]).exhibitions
+		else
+			@exhibitions = Exhibition.all
+		end
 	end
 
 	def show
@@ -9,9 +13,19 @@ class ExhibitionsController < ApplicationController
 	end
 
 	def new
+		@exhibition = Exhibition.new
 	end
 
 	def create
+		@exhibition = Exhibition.new(exhibition_params)
+		@exhibition.save
+		redirect_to exhibition_path(@exhibition)
+	end
+
+	def update
+		@exhibition = Exhibition.find(params[:id])
+		@exhibition.update(exhibition_params)
+		redirect_to exhibition_path(@exhibition)
 	end
 
 	def destroy

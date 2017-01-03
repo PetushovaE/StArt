@@ -1,7 +1,7 @@
 class Exhibition < ApplicationRecord
 
-	has_many :rsvp
-	has_many :users, through: :rsvp
+	has_many :rsvps
+	has_many :users, through: :rsvps
 	has_many :comments
 
 	validates :name,:presence => true

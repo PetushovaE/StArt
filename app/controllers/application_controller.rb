@@ -1,9 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  	def user_signed_id?
 
-  	end
+    def logged_in?
+      !!current_user
+    end
 
   		private
     	

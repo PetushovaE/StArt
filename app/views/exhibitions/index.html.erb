@@ -1,6 +1,6 @@
 <ul>
 <% @exhibitions.each do |exhibition| %>
-  <li><%= display_user(exhibition) %> - <%= link_to exhibition.name, exhibition_path(exhibition) %></li>
+  <li><%= exhibition %> - <%= link_to exhibition.name, exhibition_path(exhibition) %></li>
 <% end %>
 </ul>
 <br>
