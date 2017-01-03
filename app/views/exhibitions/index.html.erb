@@ -1,0 +1,7 @@
+<ul>
+<% @exhibitions.each do |exhibition| %>
+  <li><%= display_user(exhibition) %> - <%= link_to exhibition.name, exhibition_path(exhibition) %></li>
+<% end %>
+</ul>
+<br>
+<%= link_to "Add New Exhibition", new_exhibition_path %>
