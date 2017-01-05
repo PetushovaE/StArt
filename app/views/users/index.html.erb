@@ -6,13 +6,11 @@
   </div>
 <% end %>
 
-
-
-  	<div class="info">
-   
-      	<p><strong>ADMIN</strong></p>
-   
-    	<p><strong>Name:</strong> </p>
-    
-    </div>
+ <div class="container">
+  	<div class="row">
+    	<h3>Users:</h3><% @users.each do |user| %>      	
+        <li><%= link_to user.name, user_path(user) %></li>
+    	<% end %>    
+    	</div>
+  	</div>
 </div>

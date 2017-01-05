@@ -15,28 +15,25 @@ class UsersController < ApplicationController
 
   	def create
     	@user = User.new(user_params)
-    	respond_to do |format|
-      		if @user.save
-        		session[:user_id] = @user.id
-        		format.html { redirect_to user_path(@user), notice: "Welcome to the StArt!" }
-      		else
-        		format.html { render :new }
+      	if @user.save
+          flash[:success] = "Welcome to the St.Art App!"
+        	redirect_to @user
+      	else
+        	render :new 
       		end
-    	end
   	end
 
   	def edit
   	end
 
   	def update
-    	respond_to do |format|
-      		if @user.update(user_params)
-        		findormat.html { redirect_to @user, notice: 'User was successfully updated.' }
+      if @user.update(user_params)
+        redirect_to @user, notice: 'User was successfully updated.' 
       		else
-        		format.html { render :edit }
+        	render :edit
      	 	end
     	end
-  	end
+  	
 
 
 	private
@@ -46,8 +43,8 @@ class UsersController < ApplicationController
 		@user = User.find_by(id: params[:id])
 	end
 
-	def users_params
-		params.require(:user).permit(:name, :password)
+	def user_params
+		params.require(:user).permit(:name, :email, :password, :password_confirmation)
 	end
 
 

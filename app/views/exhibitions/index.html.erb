@@ -1,7 +1,9 @@
+<%= link_to "Add New Exhibition", new_exhibition_path %>
+
 <ul>
+	<br>
 <% @exhibitions.each do |exhibition| %>
-  <li><%= exhibition %> - <%= link_to exhibition.name, exhibition_path(exhibition) %></li>
+  <li><%= exhibition.name %> - <%= link_to exhibition.name, exhibition_path(exhibition) %></li>
 <% end %>
 </ul>
 <br>
-<%= link_to "Add New Exhibition", new_exhibition_path %>
