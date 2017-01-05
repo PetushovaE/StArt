@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170103190341) do
+ActiveRecord::Schema.define(version: 20170105181605) do
+
+  create_table "artists", force: :cascade do |t|
+    t.string   "name"
+    t.string   "exhibition_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string   "content"
@@ -27,6 +34,17 @@ ActiveRecord::Schema.define(version: 20170103190341) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.text     "description"
+    t.string   "address"
+    t.string   "artist"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text     "description"
+    t.integer  "rating"
+    t.integer  "user_id"
+    t.integer  "rsvp_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "rsvps", force: :cascade do |t|
@@ -34,6 +52,7 @@ ActiveRecord::Schema.define(version: 20170103190341) do
     t.integer  "exhibition_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "status"
   end
 
   create_table "users", force: :cascade do |t|

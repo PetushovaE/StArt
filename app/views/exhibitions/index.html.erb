@@ -3,7 +3,8 @@
 <ul>
 	<br>
 <% @exhibitions.each do |exhibition| %>
-  <li><%= exhibition.name %> - <%= link_to exhibition.name, exhibition_path(exhibition) %></li>
+  <li><%= link_to exhibition.name, exhibition_path(exhibition) %></li>
+  Dates:
 <% end %>
 </ul>
 <br>
