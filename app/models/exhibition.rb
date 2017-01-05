@@ -11,7 +11,7 @@ class Exhibition < ApplicationRecord
 	validate :validate_end_at_before_start_at
 
 	def dates
-		self.start_at + " - " + self.end_at
+		self.start_at.strftime('%B %d, %Y') + " - " + self.end_at.strftime('%B %d, %Y')
 	end
 
 	def self.most_rsvp

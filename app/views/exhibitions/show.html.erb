@@ -7,6 +7,8 @@ Artist: <%= @exhibition.artist %>
 Description: <%= @exhibition.description %>
 <br>
 <br>
+Dates: <%= @exhibition.dates %>
+<br>
 <br>
 Address: <%= @exhibition.address %>
 <br>
@@ -14,7 +16,13 @@ Address: <%= @exhibition.address %>
 Comments: <%= @exhibition.comments %>
 <br>
 <br>
-RSVP option YES NO 
+RSVP option YES NO
+<%= form_for @rsvp do |f|%>
+    <%= f.hidden_field :exhibition_id %>
+    Are you Attending?
+	<%= f.collection_select(:status, ["Yes", "No", "Maybe"], :to_s, :to_s) %>
+	<%= f.submit "RSVP to this Exhbition", :class => "btn btn-primary" %>
+<% end %> 
 <br>
 <br>
 Rating: or Rate exhibitions?

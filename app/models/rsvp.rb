@@ -1,6 +1,8 @@
 class Rsvp < ApplicationRecord
 	belongs_to :user
 	belongs_to :exhibition
+	# ratings if yes
+	# no rating if no
 
 	# scope :yes, -> { where( :answer => 'yes' ) }
 	# scope :no, -> { where( :answer => 'no' ) }
