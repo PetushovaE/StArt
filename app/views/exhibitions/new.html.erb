@@ -1,7 +1,7 @@
 <h4>Add an Exhibition</h4>
 <br>
 <%= form_for @exhibition do |f| %>
-  <%= f.label :name %>
+  <%= f.label :title %>
   <%= f.text_field :name %><br>
 
   <%= f.label :artist %>
@@ -10,13 +10,26 @@
   <%= f.label :description %>
   <%= f.text_area :description %><br>
 
-  <%= f.label :address %>
-  <%= f.text_area :address %><br>
+    <%= f.fields_for :addresses do |addr| %>
+      <%= addr.label :street %>
+      <%= addr.text_field :street_address %><br>
+ 
+      <%= addr.label :city %>
+      <%= addr.text_field :city %><br>
+ 
+      <%= addr.label :state %>
+      <%= addr.text_field :state %><br>
+ 
+      <%= addr.label :zipcode %>
+      <%= addr.text_field :zipcode %>
+      <% end %><br>
 
   <%= f.label :start_at %>
   <%= f.date_select :start_at %><br>
 
   <%= f.label :end_at %>
-  <%= f.date_select :end_at %><br>
-  <%= f.submit %>
+  <%= f.date_select :end_at %>
+  <br>
+
+  <%= f.submit "Create", class: "btn btn-primary" %>
 <% end %>

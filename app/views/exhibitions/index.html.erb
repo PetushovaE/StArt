@@ -1,10 +1,11 @@
-<%= link_to "Add New Exhibition", new_exhibition_path %>
 
+
+<h1>Exhibitions</h1>
 <ul>
 	<br>
 <% @exhibitions.each do |exhibition| %>
   <li><%= link_to exhibition.name, exhibition_path(exhibition) %></li>
-  Dates:
+  
 <% end %>
 </ul>
 <br>

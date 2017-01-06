@@ -5,13 +5,18 @@ class Exhibition < ApplicationRecord
 	has_many :comments
 	has_many :artists
 
+	has_many :addresses
+  	accepts_nested_attributes_for :addresses
+
 	has_one :review
 
 	validates :name, :description, :address, presence: true
 	validate :validate_end_at_before_start_at
 
 	def dates
-		self.start_at.strftime('%B %d, %Y') + " - " + self.end_at.strftime('%B %d, %Y')
+		if start_at && end_at
+			self.start_at.strftime('%B %d, %Y') + " - " + self.end_at.strftime('%B %d, %Y')
+		end
 	end
 
 	def self.most_rsvp

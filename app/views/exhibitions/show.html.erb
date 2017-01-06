@@ -10,10 +10,17 @@ Description: <%= @exhibition.description %>
 Dates: <%= @exhibition.dates %>
 <br>
 <br>
-Address: <%= @exhibition.address %>
+<p>Address: <%= @exhibition.addresses.each do |addr| %>
+<%= addr.street_address %>
+<%= addr.city %>
+<%= addr.state%>
+<%= addr.zipcode%></p>
+<% end %>
 <br>
 <br>
-Comments: <%= @exhibition.comments %>
+<p>Comments: <%= @exhibition.comments.each do |comment|%>
+<% comment.description %>
+<% end %></p>
 <br>
 <br>
 RSVP option YES NO
@@ -25,4 +32,3 @@ RSVP option YES NO
 <% end %> 
 <br>
 <br>
-Rating: or Rate exhibitions?
