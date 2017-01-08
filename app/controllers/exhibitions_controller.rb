@@ -13,6 +13,7 @@ class ExhibitionsController < ApplicationController
 		@exhibition = Exhibition.find_by(id: params[:id])
 		@rsvp = @exhibition.rsvps.build
 		@exhibition.addresses.build
+		@exhibition.dates
 	end
 
 	def new

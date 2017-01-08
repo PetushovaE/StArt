@@ -9,11 +9,13 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    self.current_user = nil
+    logout
     redirect_to root_url, notice: "Signed out"
   end
  
   def auth
     request.env['omniauth.auth']
   end
+
+
 end
