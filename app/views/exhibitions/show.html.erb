@@ -30,5 +30,9 @@ RSVP option YES NO
 	<%= f.collection_select(:status, ["Yes", "No", "Maybe"], :to_s, :to_s) %>
 	<%= f.submit "RSVP to this Exhbition", :class => "btn btn-primary" %>
 <% end %> 
+
+
+<%= link_to "Edit", edit_exhibition_path(@exhibition) %>
+<%= link_to "Delete",  exhibition_path(@exhibition), :method => 'DELETE %>'
 <br>
 <br>

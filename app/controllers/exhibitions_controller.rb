@@ -9,7 +9,6 @@ class ExhibitionsController < ApplicationController
 	end
 
 	def show
-
 		@exhibition = Exhibition.find_by(id: params[:id])
 		@rsvp = @exhibition.rsvps.build
 		@exhibition.addresses.build
@@ -23,9 +22,12 @@ class ExhibitionsController < ApplicationController
 
 
 	def create
-
-		@exhibition = Exhibition.create(exhibition_params)
+		@exhibition = Exhibition.find_by(id: params[:id])
+		if @exhibition.save
 		redirect_to exhibition_path(@exhibition)
+	else
+		render :new
+	end
 	end
 
 	def update
