@@ -1,12 +1,12 @@
 class RsvpsController < ApplicationController
 
+	def show
+		@rsvp = Rsvp.find_by(id: params[:id])
+	end
+	
 	def index
 		@rsvps = Rsvp.all 
 		# @attendees_sum = @rsvps.where(accept: true).sum(:attendees)
-	end
-
-	def show
-		@rsvp = Rsvp.find_by(id: params[:id])
 	end
 
 	def new
@@ -18,6 +18,9 @@ class RsvpsController < ApplicationController
 		@rsvp.save
 			# flash[:success] = 'Thank you for RSVP!'
 		redirect_to rsvp_path(@rsvp)  
+	end
+
+	def update
 	end
 
 	private

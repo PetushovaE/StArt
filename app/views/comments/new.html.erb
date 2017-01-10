@@ -1,0 +1,5 @@
+<%= form_for @exhibition do |f| %>
+<%= f.text_field :content, placeholder: "content" %><br>
+<%= f.hidden_field :user_id, value: current_user.id %>
+<% f.submit "Add Comment", class: "btn btn-primary" %>
+<% end %>

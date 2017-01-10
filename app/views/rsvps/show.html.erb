@@ -1,4 +1,4 @@
-RSVP show
-<%= @rsvp.user.name %>
+
+<%= link_to @rsvp.user_name, user_path(@rsvp.user) %>
 <p><%= @rsvp.status %></p>
-<p><%= @rsvp.exhibition.name %></p>
+<p><%= link_to @rsvp.exhibition_name, exhibition(@rsvp.exhibition)  %></p>

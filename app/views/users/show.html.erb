@@ -2,19 +2,26 @@
 
 
 <h4><%= @user.name if @user.name %></h4>
-Exhibitions You Added:
-<%= @user.exhibitions.each do |name| %>
+
+Exhibitions You RSVP: 
+<%= @user.rsvps.each do |rsvp| %>
+<li><%= link_to rsvp.exhibition, rsvp.exhibition %></li>
+<% end %><br>
+---------------------------------------------------------
+<br>
+Exhibitions You Posted:
+
+<%= @user.exhibitions.each do |exhibition| %>
+
+
 <li><%= link_to exhibition.name, user_exhibition_path(@user, exhibition) %></li>
 <% end %>
 
+
 <br>
 
-Exhibitions You RSVP: 
-<%= @user.exhibitions.each do |name| %>
-<li><%= link_to exhibition.name, user_exhibitions_path(@user, exhibition) %></li>
-<% end %>
-
 <%= link_to "Edit", '#' %>
-<%= link_to "Delete",'#'%>
-
+<%= link_to "Delete",'#'%><br>
+<br>
+<%= link_to "Back", users_path %>
 

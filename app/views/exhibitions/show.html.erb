@@ -19,11 +19,13 @@ Dates: <%= @exhibition.dates %>
 <br>
 <br>
 <p>Comments: <%= @exhibition.comments.each do |comment|%>
-<% comment.description %>
+<%= comment.description %>
 <% end %></p>
 <br>
 <br>
-RSVP option YES NO
+
+
+RSVP option YES NO MAYBE:
 <%= form_for @rsvp do |f|%>
     <%= f.hidden_field :exhibition_id %>
     Are you Attending?
@@ -33,6 +35,6 @@ RSVP option YES NO
 
 
 <%= link_to "Edit", edit_exhibition_path(@exhibition) %>
-<%= link_to "Delete",  exhibition_path(@exhibition), :method => 'DELETE %>'
+<%= link_to "Delete",  exhibition_path(@exhibition), :method => 'DELETE' %>
 <br>
 <br>
