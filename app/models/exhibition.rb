@@ -4,6 +4,7 @@ class Exhibition < ApplicationRecord
 	has_many :users, through: :rsvps
 	has_many :comments
 	has_many :artists
+	belongs_to :author, :class_name => 'User', optional: true
 
 	has_many :addresses
   	accepts_nested_attributes_for :addresses

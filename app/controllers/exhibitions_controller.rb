@@ -16,13 +16,14 @@ class ExhibitionsController < ApplicationController
 	end
 
 	def new
-		@exhibition = Exhibition.new
+		@exhibition = Exhibition.new(author_id: current_user.id)
+		# @exhibition = Exhibition.new(user_id: params[:user_id])
 		@exhibition.addresses.build
 	end
 
 
 	def create
-		@exhibition = Exhibition.find_by(id: params[:id])
+		@exhibition = Exhibition.new(exhibition_params)
 		if @exhibition.save
 		redirect_to user_exhibition_path(current_user, @exhibition)
 	else
@@ -48,7 +49,7 @@ class ExhibitionsController < ApplicationController
 	private
 
 	def exhibition_params
-		params.require(:exhibition).permit(:name, :artist, :review, :description, :user_id, address_ids:[], addresses_attributes:[:street_address, :city, :state, :zipcode
+		params.require(:exhibition).permit(:name, :artist, :review, :description, :author_id, address_ids:[], addresses_attributes:[:street_address, :city, :state, :zipcode
     ])
 	end
 # :dates, 

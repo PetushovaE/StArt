@@ -5,9 +5,9 @@
 
 Exhibitions You RSVP: 
 <%= @user.rsvps.each do |rsvp| %>
-<li><%= link_to rsvp.exhibition, rsvp.exhibition %></li>
+<li><%= link_to rsvp.exhibition.name, rsvp.exhibition %></li>
 <% end %><br>
----------------------------------------------------------
+
 <br>
 Exhibitions You Posted:
 

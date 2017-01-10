@@ -5,6 +5,6 @@
 		<br>
 		<% @exhibitions.each do |exhibition| %>
   			<li>Title: <%= link_to exhibition.name, exhibition_path(exhibition) %></li>
-  			<li>Number of RSVPs: <%= exhibition.rsvps_count %></li>
+  			<li>Number of RSVPs: <%= exhibition.rsvps.length %></li>
  		<% end %>
 	</ul>
