@@ -25,6 +25,13 @@ class RsvpsController < ApplicationController
 	def update
 	end
 
+	def destroy
+		@rsvp = Rsvp.find_by(id: params[:id])
+		@rsvp.delete
+		# redirect_to rsvps_path, notice: 'You removed rsvped exhibition.' 
+		redirect_to rsvp_path(current_user, @exhibition.rsvp), notice: 'You removed rsvped exhibition.' 
+	end
+
 	private
 
 	def rsvp_params

@@ -11,9 +11,18 @@ class Exhibition < ApplicationRecord
   	accepts_nested_attributes_for :addresses
 
 	has_one :review
+	validates :name, presence: true
 
-	validates :name, :description, :address, presence: true
+	# validates :name, :description, presence: true
 	validate :validate_end_at_before_start_at
+
+	# def addresses_attributes=(attributes)
+	# 	attributes.values.each do |attr|
+	# 		@address = self.addresses.build(attr)
+	# 		# byebug.pry
+	# 	end
+	# 		@address.save
+	# end
 
 	def dates
 		if start_at && end_at

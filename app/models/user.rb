@@ -1,9 +1,9 @@
 class User < ApplicationRecord
 	
 	has_many :rsvps
+	has_many :exhibitions
 	has_many :exhibitions, through: :rsvps
 	has_many :comments
-	# has_many :exhibitions
 
 	has_secure_password
 

@@ -1,3 +1,3 @@
 class Address < ApplicationRecord
-	has_many :exhibitions
+	belongs_to :exhibition, optional: true
 end

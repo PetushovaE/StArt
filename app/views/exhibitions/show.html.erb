@@ -1,26 +1,26 @@
 <h3>Exhibition: <%= @exhibition.name.capitalize %> </h3> 
+
+<br>
+<label>Artist:</label> <%= @exhibition.artist %>
 <br>
 <br>
-Artist: <%= @exhibition.artist %>
+<label>Description:</label> <%= @exhibition.description %>
 <br>
 <br>
-Description: <%= @exhibition.description %>
+<label>Dates:</label> <%= @exhibition.dates %>
 <br>
 <br>
-Dates: <%= @exhibition.dates %>
-<br>
-<br>
-<p>Location: <%= @exhibition.addresses.each do |addr| %>
+<label>Location:</label> <% @exhibition.addresses.each do |addr| %>
 <%= addr.street_address %>
 <%= addr.city %>
 <%= addr.state%>
 <%= addr.zipcode%></p>
 <% end %>
-<br>
+
 <br>
 <% if !logged_in? %>
 <% else %>
-<p>Comments: <%= @exhibition.comments.each do |comment|%> 
+<label>Comments:</label> <% @exhibition.comments.each do |comment|%> 
 <%= comment.description %>
 <% end %></p><%= link_to "Add comment", new_exhibition_comment_path(@exhibition, @exhibition.comments.build) %>
 <br>
@@ -30,7 +30,7 @@ Dates: <%= @exhibition.dates %>
 
 <%= form_for Rsvp.new do |f|%>
     <%= f.hidden_field :exhibition_id %>
-    Are you Attending?
+    <label>Are you Attending?</label>
 	<%= f.collection_select(:status, ["Yes", "No", "Maybe"], :to_s, :to_s) %>
 	<%= f.submit "RSVP to this Exhbition", :class => "btn btn-primary" %>
 <% end %> 

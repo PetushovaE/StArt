@@ -1,27 +1,22 @@
 <h1>Exhibitions</h1>
-	<table>
+	
+		<% if @exhibitions.empty? %>
+		No Exhibitions Found
+		<% else %>
+		<table>
 		<tr>
 			<th>Title</th>
 			<th>Summary</th>
-			<th></th>
-			<th></th>
-			
 		</tr>
 		<% @exhibitions.each do |exhibition| %>
-		 <tr>
-		 	
-		 	<td><%= exhibition.name %></td>
-		 	
-		 	<td>|<%= exhibition.description %></td>
-		 	
-		 	<td><%= link_to "Show", exhibition_path(exhibition) %></td>
-  			 
-  			</tr>			
+		<tr>
+		 	<td><%= exhibition.name.capitalize %></td> 
+		 	<td> - <%= exhibition.description %> | <%= link_to "Show", exhibition_path(exhibition) %></td>
+  		</tr>
+  		<% end %>			
  		<% end %>
 	</table>
 
-	<br>
-	<br>
 
 	
 
