@@ -10,7 +10,7 @@ Description: <%= @exhibition.description %>
 Dates: <%= @exhibition.dates %>
 <br>
 <br>
-<p>Address: <%= @exhibition.addresses.each do |addr| %>
+<p>Location: <%= @exhibition.addresses.each do |addr| %>
 <%= addr.street_address %>
 <%= addr.city %>
 <%= addr.state%>
@@ -18,23 +18,21 @@ Dates: <%= @exhibition.dates %>
 <% end %>
 <br>
 <br>
-<p>Comments: <%= @exhibition.comments.each do |comment|%>
+<% if !logged_in? %>
+<% else %>
+<p>Comments: <%= @exhibition.comments.each do |comment|%> 
 <%= comment.description %>
-<% end %></p>
+<% end %></p><%= link_to "Add comment", new_exhibition_comment_path(@exhibition, @exhibition.comments.build) %>
 <br>
 <br>
 
 
-RSVP option YES NO MAYBE:
-<%= form_for @rsvp do |f|%>
+
+<%= form_for Rsvp.new do |f|%>
     <%= f.hidden_field :exhibition_id %>
     Are you Attending?
 	<%= f.collection_select(:status, ["Yes", "No", "Maybe"], :to_s, :to_s) %>
 	<%= f.submit "RSVP to this Exhbition", :class => "btn btn-primary" %>
 <% end %> 
-
-
-<%= link_to "Edit", edit_exhibition_path(@exhibition) %>
-<%= link_to "Delete",  exhibition_path(@exhibition), :method => 'DELETE' %>
-<br>
+<% end %> 
 <br>

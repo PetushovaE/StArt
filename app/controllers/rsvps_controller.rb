@@ -15,9 +15,11 @@ class RsvpsController < ApplicationController
 
 	def create
 		@rsvp = current_user.rsvps.build(rsvp_params)
-		@rsvp.save
-			# flash[:success] = 'Thank you for RSVP!'
-		redirect_to rsvp_path(@rsvp)  
+		if @rsvp.save
+			flash[:success] = 'You have RSVPed!'
+		redirect_to rsvp_path(@rsvp)
+		# redirect_to Exhibition.find(params[:exhibition_id]) 
+		end 
 	end
 
 	def update

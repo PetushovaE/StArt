@@ -1,10 +1,28 @@
-<%= link_to "Add Exhibition", new_exhibition_path %>
-
 <h1>Exhibitions</h1>
-	<ul>
-		<br>
+	<table>
+		<tr>
+			<th>Title</th>
+			<th>Summary</th>
+			<th></th>
+			<th></th>
+			
+		</tr>
 		<% @exhibitions.each do |exhibition| %>
-  			<li>Title: <%= link_to exhibition.name, exhibition_path(exhibition) %></li>
-  			<li>Number of RSVPs: <%= exhibition.rsvps.length %></li>
+		 <tr>
+		 	
+		 	<td><%= exhibition.name %></td>
+		 	
+		 	<td>|<%= exhibition.description %></td>
+		 	
+		 	<td><%= link_to "Show", exhibition_path(exhibition) %></td>
+  			 
+  			</tr>			
  		<% end %>
-	</ul>
+	</table>
+
+	<br>
+	<br>
+
+	
+
+

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 	resources :exhibitions do
 		resources :comments
 	end
-
+	resources :exhibitions 
 	resources :comments
 	resources :rsvps
 

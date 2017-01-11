@@ -9,16 +9,20 @@ class CommentsController < ApplicationController
 	end
 
 	def new
+		@comment = Comment.new
 	end
 
 	def create
-		@exhibition = Exhibition.find_by(id: params[:id])
-		@comment = @exhibition.comments.build(content: params[:content], user_id: current_user.id)
+		# @exhibition = Exhibition.find_by(id: params[:id])
+		# byebug.pry
+		@comment = Comment.new(comment_params)
+		# 
 		if @comment.save
-			render json :@comment
+			flash[:success] = 'Your comment was successfully added!'
+			redirect_to exhibition_path(@comment.exhibition)
 		else
 			flash[:alert] = "Your comment wasn't posted!"
-			redirect_to exhibition_path(exhibition)
+			# redirect_to exhibition_path(exhibition)
 		end
 
 		def destroy
@@ -32,7 +36,8 @@ class CommentsController < ApplicationController
 		private
 
 		def comment_params
-			params.require(:comment).permit(:user_id, :content, :exhibition_id)
+			params.require(:comment).permit(:content, :user_id)
+			# , :exhibition_id
 		end
 	end
 

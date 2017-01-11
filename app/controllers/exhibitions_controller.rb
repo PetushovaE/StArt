@@ -10,14 +10,11 @@ class ExhibitionsController < ApplicationController
 
 	def show
 		@exhibition = Exhibition.find_by(id: params[:id])
-		# @rsvp = @exhibition.rsvps.build
-		# @exhibition.addresses.build
-		# @exhibition.dates
+		
 	end
 
 	def new
 		@exhibition = Exhibition.new(author_id: current_user.id)
-		# @exhibition = Exhibition.new(user_id: params[:user_id])
 		@exhibition.addresses.build
 	end
 
@@ -29,6 +26,11 @@ class ExhibitionsController < ApplicationController
 	else
 		render :new
 	end
+	end
+
+
+	def edit 
+		@exhibition = Exhibition.find(params[:id])
 	end
 
 	def update
