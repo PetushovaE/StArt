@@ -10,5 +10,4 @@ class Rsvp < ApplicationRecord
 	def exhibition_name
 		self.exhibition.name
 	end
-	
 end

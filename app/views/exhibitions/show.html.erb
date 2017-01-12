@@ -1,38 +1,26 @@
-<h3>Exhibition: <%= @exhibition.name.capitalize %> </h3> 
+<h3>Exhibition: <%= @exhibition.name %></h3><br>
+	<label>Artist:</label> <%= @exhibition.artist %><br><br>
+	<label>Description:</label> <%= @exhibition.description %><br><br>
+	<label>Dates:</label> <%= @exhibition.dates %><br><br>
+	<label>Location:</label> <%= @exhibition.address %><br>
 
-<br>
-<label>Artist:</label> <%= @exhibition.artist %>
-<br>
-<br>
-<label>Description:</label> <%= @exhibition.description %>
-<br>
-<br>
-<label>Dates:</label> <%= @exhibition.dates %>
-<br>
-<br>
-<label>Location:</label> <% @exhibition.addresses.each do |addr| %>
-<%= addr.street_address %>
-<%= addr.city %>
-<%= addr.state%>
-<%= addr.zipcode%></p>
-<% end %>
+	<% if !logged_in? %>
+		<% else %>
+		<label>Comments:</label> <% @exhibition.comments.each do |comment|%> 
+			<%= comment.description %>
+			<% end %></p><%= link_to "Add comment", new_exhibition_comment_path(@exhibition, @exhibition.comments.build) %><br><br>
 
-<br>
-<% if !logged_in? %>
-<% else %>
-<label>Comments:</label> <% @exhibition.comments.each do |comment|%> 
-<%= comment.description %>
-<% end %></p><%= link_to "Add comment", new_exhibition_comment_path(@exhibition, @exhibition.comments.build) %>
-<br>
-<br>
+			<% if !logged_in? %>
+			<% else %>
+			
+			<%= form_for @rsvp do |f|%>
+    			<%= f.hidden_field :exhibition_id %>
+    			<label>Are you Attending?</label>
+					<%= f.collection_select(:status, ["Yes", "No", "Maybe"], :to_s, :to_s) %>
+					<%= f.submit "RSVP to this Exhbition", :class => "btn btn-primary" %>
+					<% end %>
+				<% end %> 
+			<% end %> <br>
 
 
-
-<%= form_for Rsvp.new do |f|%>
-    <%= f.hidden_field :exhibition_id %>
-    <label>Are you Attending?</label>
-	<%= f.collection_select(:status, ["Yes", "No", "Maybe"], :to_s, :to_s) %>
-	<%= f.submit "RSVP to this Exhbition", :class => "btn btn-primary" %>
-<% end %> 
-<% end %> 
-<br>
+			<%= link_to "Back to Exhibitions", exhibitions_path %>

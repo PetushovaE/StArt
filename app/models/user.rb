@@ -19,7 +19,5 @@ class User < ApplicationRecord
 
 	def rsvps_count
 		self.exhibitions.count
-	end
-
-	
+	end	
 end

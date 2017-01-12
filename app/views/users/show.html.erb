@@ -1,35 +1,32 @@
 <%= link_to "Add Exhibition", new_exhibition_path %>
-
 <h4><%= @user.name if @user.name %></h4>
-
-
 <h2>Exhibitions You RSVP: </h2>
 	<table>
 		<tr>
-			<% if @user.rsvps.empty? %>
-		No Rsvps Found.
+		<% if @user.rsvps.empty? %>
+			No Rsvps Found.
 		<% else %>
+			RSVPed to <%= @user.rsvps_count %> exhibitions.<br>
 			<th>Title</th>
-			
-			<th></th>
+			<th>Status</th>
 			<th></th>
 			<th></th>
 		</tr>
 		
 		<% @user.rsvps.each do |rsvp| %>
 		<tr>
-		 	<td><%= "rsvp.exhibition.name" %> <%= link_to "Remove", rsvp, method: :delete, data: {confirm: "Are you sure?"} %></td> 
+			<td><%= rsvp.exhibition_name  %></td>
+		 	<td><%= rsvp.status %></td> 
   		</tr>	
   		<% end %>		
  		<% end %>
-	</table>
-
-	<br>
+	</table><br>
+	
 	<h2>Exhibitions You Posted:</h2>
 		<table>
 			<tr>
 			<% if @user.exhibitions.empty? %>
-			No Exhibitions Found. 
+				No Exhibitions Found. 
 			<% else %>
 				<th>Title</th>
 				<th></th>
@@ -37,13 +34,16 @@
 				<th></th>
 			</tr>
 			
-			<%= @user.exhibitions.each do |exhibition| %>
+			<% @user.exhibitions.each do |exhibition| %>
 			<tr>
-		 		<td><%= exhibition.name %> | <%= link_to "Show", user_exhibition_path(exhibition) %> | <%= link_to "Edit", edit_user_exhibition_path(exhibition) %> | <%= link_to "Remove", exhibition, method: :delete, data: {confirm: "Are you sure?"} %></td> 
+		 		<td><%= link_to exhibition.name, user_exhibition_path(@user, exhibition) %>| <%= link_to "Edit", edit_exhibition_path(exhibition) %> | <%= link_to "Remove", exhibition, method: :delete, data: {confirm: "Are you sure?"} %></td> 
 		 		<% end %>			
  			<% end %>
   			</tr>
-		</table>
+	</table>
+
+
+
 
 
 

@@ -7,22 +7,15 @@ class Exhibition < ApplicationRecord
 	
 	belongs_to :author, :class_name => 'User', optional: true
 
-	has_many :addresses
-  	accepts_nested_attributes_for :addresses
-
 	has_one :review
 	validates :name, presence: true
 
-	# validates :name, :description, presence: true
+	validates :name, :description, presence: true
 	validate :validate_end_at_before_start_at
 
-	# def addresses_attributes=(attributes)
-	# 	attributes.values.each do |attr|
-	# 		@address = self.addresses.build(attr)
-	# 		# byebug.pry
-	# 	end
-	# 		@address.save
-	# end
+	def address
+		"#{self.street_address}, #{self.city}, #{self.state} #{self.zipcode}" 
+	end
 
 	def dates
 		if start_at && end_at

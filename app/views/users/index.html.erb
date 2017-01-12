@@ -1,15 +1,15 @@
 <p id="notice"><%= notice %></p>
 <% if @message %>
-  	<div class="center alert">
-    	<p><%= @message %></p>
+  <div class="center alert">
+    <p><%= @message %></p>
   </div>
-<% end %>
- <div class="container">
+  <% end %>
+  <div class="container">
   	<div class="row">
     	<h1>Users:</h1>
-    		<h3><% @users.each do |user| %>      	
+    		<h2><% @users.each do |user| %>      	
         	<%= link_to user.name, user_path(user) %><br> 
-    		<% end %>   <br> 
-    	</h3></div>
+    		  <% end %><br> 
+    	  </h2></div>
   	</div>
-</div>
+  </div>

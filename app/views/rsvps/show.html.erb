@@ -1,3 +1,7 @@
-<%= link_to @rsvp.user_name, user_path(@rsvp.user) %>
-<p><%= @rsvp.status %></p>
-<p><%= link_to @rsvp.exhibition_name, exhibition(@rsvp.exhibition) %></p>
+<%= link_to @rsvp.user_name, user_path(@rsvp.user) %><br>
+	<% if current_user.rsvps.empty? %>
+		No RSVP.
+	<% else %> 
+		RSVPed to <%= current_user.rsvps_count %> exhibitions:<br>
+		Title: " <%= @rsvp.exhibition.name.capitalize %> " - status: <%= @rsvp.status %> 
+	<% end %>
