@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update]
 
 	def index
 		@users = User.all
@@ -15,9 +15,9 @@ class UsersController < ApplicationController
   end
 
   def create
+    # @user.logged_in?
     @user = User.new(user_params)
       if @user.save
-        @user.logged_in?
         flash[:success] = "Welcome to St.Art App!"
         redirect_to @user
       else
@@ -46,6 +46,4 @@ class UsersController < ApplicationController
 	def user_params
 		params.require(:user).permit(:name, :email, :password, :password_confirmation)
 	end
-
-
 end

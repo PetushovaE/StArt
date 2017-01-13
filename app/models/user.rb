@@ -1,14 +1,17 @@
 class User < ApplicationRecord
 	
-	has_many :rsvps
 	has_many :exhibitions
-	has_many :exhibitions, through: :rsvps
-	has_many :comments
 
-	has_secure_password
+	has_many :rsvps
+	has_many :exhibitions, through: :rsvps
+
+	has_many :comments
+	has_many :exhibitions, through: :comments
 
 	validates :email, :presence => true
 	validates :email, :uniqueness => true
+
+	has_secure_password
 
 
 	def self.find_or_create_by_omniauth(auth_hash)

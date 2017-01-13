@@ -2,7 +2,6 @@ class Rsvp < ApplicationRecord
 	belongs_to :user
 	belongs_to :exhibition
 
-
 	def user_name
 		self.user.name
 	end

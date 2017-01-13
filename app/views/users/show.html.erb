@@ -4,7 +4,7 @@
 	<table>
 		<tr>
 		<% if @user.rsvps.empty? %>
-			No Rsvps Found.
+			No Rsvps.
 		<% else %>
 			RSVPed to <%= @user.rsvps_count %> exhibitions.<br>
 			<th>Title</th>
@@ -26,7 +26,7 @@
 		<table>
 			<tr>
 			<% if @user.exhibitions.empty? %>
-				No Exhibitions Found. 
+				No Exhibitions. 
 			<% else %>
 				<th>Title</th>
 				<th></th>
@@ -42,6 +42,11 @@
   			</tr>
 	</table>
 
+	<h2>You commented on the following exhibitions:</h2> 
+	<% if @user.comments.empty? %>
+				No Comments. 
+			<% else %>
+			<% end %>
 
 
 

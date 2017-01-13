@@ -2,14 +2,16 @@ class Exhibition < ApplicationRecord
 
 	has_many :rsvps
 	has_many :users, through: :rsvps
+	
 	has_many :comments
+	has_many :users, through: :comments
+
 	has_many :artists
+	# has_one :review
 	
 	belongs_to :author, :class_name => 'User', optional: true
 
-	has_one :review
-	validates :name, presence: true
-
+	# validates :name, presence: true
 	validates :name, :description, presence: true
 	validate :validate_end_at_before_start_at
 

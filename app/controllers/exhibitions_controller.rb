@@ -10,7 +10,6 @@ class ExhibitionsController < ApplicationController
 
 	def show
 		@exhibition = Exhibition.find_by(id: params[:id])
-
 		@rsvp = @exhibition.rsvps.build
 		# @exhibition.dates
 	end

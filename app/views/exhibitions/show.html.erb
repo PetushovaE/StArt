@@ -1,14 +1,19 @@
-<h3>Exhibition: <%= @exhibition.name %></h3><br>
-	<label>Artist:</label> <%= @exhibition.artist %><br><br>
+<h3><%= @exhibition.name %></h3><br>
+	
 	<label>Description:</label> <%= @exhibition.description %><br><br>
 	<label>Dates:</label> <%= @exhibition.dates %><br><br>
 	<label>Location:</label> <%= @exhibition.address %><br>
 
 	<% if !logged_in? %>
 		<% else %>
-		<label>Comments:</label> <% @exhibition.comments.each do |comment|%> 
-			<%= comment.description %>
-			<% end %></p><%= link_to "Add comment", new_exhibition_comment_path(@exhibition, @exhibition.comments.build) %><br><br>
+
+		<label>Comments:</label>
+		<% @exhibition.comments.each do |comment|%> 
+			<%=  %>
+			wrote
+			<%= comment.content%>
+			<% end %></p>
+			<%= link_to "Add comment", new_exhibition_comment_path(@exhibition, @exhibition.comments.build) %><br><br>
 
 			<% if !logged_in? %>
 			<% else %>

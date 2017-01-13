@@ -1,11 +1,10 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "st.art app", '#', id: "logo" %>
+    <%= link_to "st.art app", '/', id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
 
-        <li><%= link_to "About", about_path %></li>
-        <li><%= link_to "Home", '/' %></li>
+        
         <li><%= link_to "Exhibitions", exhibitions_path %></li>
        
         <% if logged_in? %>
@@ -18,9 +17,8 @@
 
             <li><%= link_to "Join", new_user_path %></li>
             <li><%= link_to "Login", login_path %></li>
-            <li><%= link_to("Login with Facebook", "/auth/facebook") %> </li>
+            <li><%= link_to("Login with Facebook", "/auth/facebook") %></li>
             <li><%= link_to("Login with Github", "/auth/github") %></li>
-
         <% end %>
       </ul>
     </nav>
