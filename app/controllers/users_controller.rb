@@ -15,7 +15,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    # @user.logged_in?
     @user = User.new(user_params)
       if @user.save
         flash[:success] = "Welcome to St.Art App!"

@@ -6,7 +6,7 @@
 		<% if @user.rsvps.empty? %>
 			No Rsvps.
 		<% else %>
-			RSVPed to <%= @user.rsvps_count %> exhibitions.<br>
+			
 			<th>Title</th>
 			<th>Status</th>
 			<th></th>
@@ -42,11 +42,6 @@
   			</tr>
 	</table>
 
-	<h2>You commented on the following exhibitions:</h2> 
-	<% if @user.comments.empty? %>
-				No Comments. 
-			<% else %>
-			<% end %>
 
 
 

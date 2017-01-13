@@ -1,9 +1,13 @@
 <h2>New Comment</h2>
 <div class="row">
   <div class="col-md-6 col-md-offset-3"><br>
+
 	<%= form_for @comment do |f| %>
-		<%= render '/error_messages' %>
+	<%= render '/error_messages' %>
 		<%= f.text_area :content, placeholder: "content" %><br>
+		<%= f.hidden_field :user_id, :value => current_user.id %>
+		<%= f.hidden_field :exhibition_id, :value => params[:exhibition_id].to_i %>
+
 		<%= f.submit "Add Comment", class: "btn btn-primary" %>
 	<% end %>
 	</div>

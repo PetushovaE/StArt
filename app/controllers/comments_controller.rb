@@ -9,15 +9,27 @@ class CommentsController < ApplicationController
 	end
 
 	def new
-		@comment = Comment.new(user_id: current_user.id)
+		@exhibition = Exhibition.find_by(id: params[:id])
+		@comment = Comment.new
 	end
 
 	def create
-		@comment = Comment.new(comment_params)
+		@comment = current_user.comments.build(comment_params)
 		if @comment.save
-			redirect_to exhibitions_path, :notice => "Your comment was successfully added!"
+			flash[:success] = "Your comment was successfully added"
+			redirect_to user_path(current_user)
 		else
+			flash[:success] = "Your comment wasn't saved"
 			render :new
+		end
+	end
+
+	def update
+		@comment = Comment.new(comment_params)
+		if @comment.update(comment_params)
+			redirect_to redirect_to exhibitions_path, :notice => "Your Comment has been updated."
+		else
+			render :edit
 		end
 	end
 

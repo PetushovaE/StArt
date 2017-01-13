@@ -1,12 +1,11 @@
 class RsvpsController < ApplicationController
 
-	def show
-		@rsvp = Rsvp.find_by(id: params[:id])
-	end
-	
 	def index
 		@rsvps = Rsvp.all 
-		# @attendees_sum = @rsvps.where(accept: true).sum(:attendees)
+	end
+
+	def show
+		@rsvp = Rsvp.find_by(id: params[:id])
 	end
 
 	def new
@@ -17,8 +16,7 @@ class RsvpsController < ApplicationController
 		@rsvp = current_user.rsvps.build(rsvp_params)
 		if @rsvp.save
 			flash[:success] = 'You have RSVPed!'
-		redirect_to rsvp_path(@rsvp)
-		# redirect_to Exhibition.find(params[:exhibition_id]) 
+		redirect_to user_path(current_user)
 		end 
 	end
 
@@ -29,7 +27,7 @@ class RsvpsController < ApplicationController
 		@rsvp = Rsvp.find_by(id: params[:id])
 		@rsvp.delete
 		# redirect_to rsvps_path, notice: 'You removed rsvped exhibition.' 
-		redirect_to rsvp_path(current_user, @exhibition.rsvp), notice: 'You removed rsvped exhibition.' 
+		redirect_to user_path(current_user), notice: 'You removed rsvped exhibition.' 
 	end
 
 	private

@@ -20,7 +20,6 @@ class ExhibitionsController < ApplicationController
 		@exhibition.dates
 	end
 
-
 	def create
 		@exhibition = Exhibition.new(exhibition_params)
 		# byebug
@@ -54,9 +53,7 @@ class ExhibitionsController < ApplicationController
 	private
 
 	def exhibition_params
-		params.require(:exhibition).permit(:name, :artist, :review, :description, :start_at, :end_at, :author_id, :street_address, :city, :state, :zipcode)
+		params.require(:exhibition).permit(:name, :review, :description, :start_at, :end_at, :author_id, :street_address, :city, :state, :zipcode)
 	end
- 
-
 end
 

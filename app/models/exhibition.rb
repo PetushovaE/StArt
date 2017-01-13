@@ -6,10 +6,10 @@ class Exhibition < ApplicationRecord
 	has_many :comments
 	has_many :users, through: :comments
 
-	has_many :artists
+	# has_many :artists
 	# has_one :review
 	
-	belongs_to :author, :class_name => 'User', optional: true
+	# belongs_to :author, :class_name => 'User', optional: true
 
 	# validates :name, presence: true
 	validates :name, :description, presence: true

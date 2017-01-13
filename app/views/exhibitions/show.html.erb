@@ -9,10 +9,9 @@
 
 		<label>Comments:</label>
 		<% @exhibition.comments.each do |comment|%> 
-			<%=  %>
-			wrote
+
 			<%= comment.content%>
-			<% end %></p>
+			<% end %>
 			<%= link_to "Add comment", new_exhibition_comment_path(@exhibition, @exhibition.comments.build) %><br><br>
 
 			<% if !logged_in? %>

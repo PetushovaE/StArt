@@ -1,3 +1,3 @@
-class Artist < ApplicationRecord
-	belongs_to :exhibition
-end
+# class Artist < ApplicationRecord
+# 	belongs_to :exhibition
+# end
