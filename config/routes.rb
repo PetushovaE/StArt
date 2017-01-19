@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
 	
 	root 'welcome#home'
-	get '/about', to: 'welcome#about'
+	# get '/about', to: 'welcome#about'
 	get '/signup', to: 'users#new'
 	post '/signup', to: 'users#create'
 	get    '/login', to: 'sessions#new'
   	post   '/login', to: 'sessions#create'
   	delete '/logout', to: 'sessions#destroy'
 
-  	resources :exhibitions 
+  	resources :exhibitions
 	resources :comments
 	resources :rsvps
 
@@ -24,9 +24,9 @@ Rails.application.routes.draw do
 		resources :comments
 	end
 
-	resources :users do
-		resources :comments 
-	end
+	# resources :users do
+	# 	resources :comments 
+	# end
 	
 	
 

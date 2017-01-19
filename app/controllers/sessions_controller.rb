@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
       redirect_to exhibitions_path, :notice => "Welcome back #{@user.name}!"
     else
       @user = User.find_by(email: params[:session][:email].downcase)
+
       if @user && @user.authenticate(params[:session][:password])
         session[:user_id] = @user.id
         redirect_to exhibitions_path, :notice => "Welcome back #{@user.name}!"
@@ -30,3 +31,5 @@ class SessionsController < ApplicationController
 
 
 end
+
+

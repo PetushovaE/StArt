@@ -46,8 +46,8 @@ class ExhibitionsController < ApplicationController
 
 	def destroy
 		@exhibition = Exhibition.find_by(id: params[:id])
-		@exhibition.destroy
-		redirect_to @user, :notice => "Your Exhibition has been deleted."
+		@exhibition.delete
+		redirect_to user_path(current_user), :notice => "Your Exhibition has been deleted."
 	end
 
 	private

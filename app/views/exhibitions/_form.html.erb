@@ -1,0 +1,33 @@
+ <%= form_for @exhibition do |f| %>
+  <%= render '/error_messages' %>
+
+  <%= f.label :title %>
+  <%= f.hidden_field :author_id %>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :body %>
+  <%= f.text_area :description %><br>
+
+  <label>Location:</label><br>
+  <%= f.label :street %>
+  <%= f.text_field :street_address %><br>
+ 
+  <%= f.label :city %>
+  <%= f.text_field :city %><br>
+ 
+  <%= f.label :state %>
+  <%= f.text_field :state %><br>
+ 
+  <%= f.label :zipcode %>
+  <%= f.text_field :zipcode %>
+
+  <label>Dates:</label><br>
+  <%= f.label :start_at %>
+  <%= f.date_select :start_at %><br>
+
+  <%= f.label :end_at %>
+  <%= f.date_select :end_at %>
+  <br>
+
+  <%= f.submit class: "btn btn-primary" %>
+  <% end %>

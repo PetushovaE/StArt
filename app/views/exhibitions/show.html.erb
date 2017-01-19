@@ -10,7 +10,7 @@
 		<label>Comments:</label><br>
 		<% @exhibition.comments.each do |comment|%> 
 
-			<%= comment.content.capitalize%> by <%= comment.user.name%><br>
+			"<%= comment.content.capitalize%> " - by <%= comment.user.name%><br>
 
 			<% end %>
 			<%= link_to "Add comment", new_exhibition_comment_path(@exhibition, @exhibition.comments.build) %><br><br>

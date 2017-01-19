@@ -1,9 +1,9 @@
 class Exhibition < ApplicationRecord
 
-	has_many :rsvps
+	has_many :rsvps, :dependent => :destroy
 	has_many :users, through: :rsvps
 	
-	has_many :comments
+	has_many :comments, :dependent => :destroy
 	has_many :users, through: :comments
 
 	# has_many :artists
