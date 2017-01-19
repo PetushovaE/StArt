@@ -9,7 +9,7 @@
 			
 			<th>Title</th>
 			<th>Status</th>
-			<th></th>
+			<th>Change Status</th>
 			<th></th>
 		</tr>
 		
@@ -17,6 +17,7 @@
 		<tr>
 			<td><%= rsvp.exhibition_name  %></td>
 		 	<td><%= rsvp.status %></td> 
+		 	<td><%= link_to 'Edit', "/users/#{@user.id}/rsvps/#{rsvp.id}/edit" %></td>
   		</tr>	
   		<% end %>		
  		<% end %>

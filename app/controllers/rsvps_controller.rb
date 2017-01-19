@@ -20,7 +20,14 @@ class RsvpsController < ApplicationController
 		end 
 	end
 
+	def edit
+  		@rsvp = Rsvp.find_by(id: params[:id])
+	end
+
 	def update
+		@rsvp = Rsvp.find_by(id: params[:id])
+		@rsvp.update(status: params[:rsvp][:status])
+		redirect_to user_path(current_user), notice: "Your RSVP Updated."
 	end
 
 	def destroy

@@ -1,0 +1,5 @@
+<%= form_for @rsvp do |f|%>
+    <label>Are you Attending?</label>
+	<%= f.collection_select(:status, ["Yes", "No", "Maybe"], :to_s, :to_s) %>
+	<%= f.submit "Update your RSVP", :class => "btn btn-primary" %>
+<% end %>

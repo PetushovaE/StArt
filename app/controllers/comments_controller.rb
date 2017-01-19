@@ -17,9 +17,13 @@ class CommentsController < ApplicationController
 		@comment = current_user.comments.build(comment_params)
 		if @comment.save
 			flash[:success] = "Your comment was successfully added"
-			redirect_to user_path(current_user)
+			redirect_to @exhibition
+			# redirect_to user_path(current_user)
 		else
-			flash[:success] = "Your comment wasn't saved"
+			# binding.pry
+			@comment.errors.messages[:content].each do |message|
+				flash[:success] = message 
+			end
 			render :new
 		end
 	end

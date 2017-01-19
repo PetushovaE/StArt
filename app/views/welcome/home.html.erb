@@ -1,4 +1,13 @@
 <div class="center-info">
     <h1>Welcome to St.Art App</h1>
     <h2>St.Art app will be offering an exciting list of exhibitions that will highlight contemporary and traditional art and exciting cultural events in New York City.</h2>
+
+
+    <div>
+          <h2>Latest Comments:</h2><br>
+
+            <% @latest_comments.each do |comment|%> 
+            <h2><%= comment.content.capitalize%></h2> <br>
+             <% end %>
+         </div>
 </div>
