@@ -7,4 +7,24 @@
   </div>
 </div>
 
-<%= link_to 'Back to exhibition', exhibitions_path %>
+<!-- %= link_to 'Back to exhibition', exhibitions_path %>-->
+
+
+	<script type="text/javascript" charset="utf-8">
+  $(function () {
+    $('form').submit(function(event) {
+      //prevent form from submitting the default way
+      event.preventDefault();
+ 
+      var values = $(this).serialize();
+ 
+      var posting = $.exhibition('/exhibitions', values);
+ 
+      posting.done(function(data) {
+        var post = data;
+        $("#exhibitionTitle").text(exhibition["name"]);
+        $("#exhibitionBody").text(exhibition["description"]);
+      });
+    });
+  });
+</script>

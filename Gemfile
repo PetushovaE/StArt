@@ -44,6 +44,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem "omniauth-github"
 gem "figaro"
+gem 'kaminari'
 
 
 

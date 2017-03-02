@@ -1,13 +1,14 @@
 class ExhibitionsController < ApplicationController
 
 	def index
-		if params[:user_id]
-			@exhibitions = Exhibition.find(params[:user_id]).exhibitions
-			render json: @exhibitions
-		else
-			@exhibitions = Exhibition.all
-			render json: @exhibitions
-		end
+		# if params[:user_id]
+		# 	@exhibitions = Exhibition.find(params[:user_id]).exhibitions
+		# 	render json: @exhibitions
+		# else
+		# 	@exhibitions = Exhibition.all
+		# 	render json: @exhibitions
+		# end
+		@exhibitions = Exhibition.order(created_at: :desc).page(params[:page])
 	end
 
 	def show
@@ -18,9 +19,10 @@ class ExhibitionsController < ApplicationController
 	end
 
 	def new
-		@exhibition = Exhibition.new(author_id: current_user.id)
+		@exhibition = Exhibition.new
+		# (author_id: current_user.id)
 		# @exhibition.addresses.build
-		@exhibition.dates
+		# @exhibition.dates
 		render json: @exhibition
 	end
 
@@ -30,7 +32,7 @@ class ExhibitionsController < ApplicationController
 		if @exhibition.save
 			# redirect_to user_exhibitions_path, :notice => "Your Exhibition was added."
 			# redirect_to @exhibition, :notice => "Your Exhibition was added."
-			render json: @exhibition
+			render json: @exhibition, status: 201
 		else
 			# render :new
 			render json: @exhibition

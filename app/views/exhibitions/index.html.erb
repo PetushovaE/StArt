@@ -1,4 +1,7 @@
 <h1>Exhibitions</h1>
+<%= page_entries_info @exhibitions %>
+<%= paginate @exhibitions, window: 2 %>
+<!-- paginate helper -->
 	<% if @exhibitions.empty? %>
 	No Exhibitions Found
 	<% else %>
