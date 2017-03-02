@@ -3,15 +3,18 @@ class UsersController < ApplicationController
 
 	def index
 		@users = User.all
+    render json :@user
 	end
 
 	def show
 		@user = User.find_by(id: params[:id])
     @exhibitions = @user.exhibitions
+    render json: @user
 	end
 
 	def new
     @user = User.new
+    render json: @user
   end
 
   def create
@@ -19,20 +22,26 @@ class UsersController < ApplicationController
       if @user.save
         # login @user
         flash[:success] = "Welcome to St.Art App!"
-        redirect_to @user
+        # redirect_to @user
+        render json: @user
       else
-        render :new 
+        # render :new 
+        render json: {errors: @user.errors.full_messages, status: :uprocessable_entity}
     end
   end
 
   def edit
+    @user = User.find(params[:id])
+    render json: @user
   end
 
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.' 
-      	else
-      	render :edit
+      # redirect_to @user, notice: 'User was successfully updated.' 
+      	render json: @user
+        else
+      	# render :edit
+        render json: {errors: @user.errors.full_messages, status: :uprocessable_entity}
      	end
   end
   	

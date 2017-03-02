@@ -3,14 +3,17 @@ class ExhibitionsController < ApplicationController
 	def index
 		if params[:user_id]
 			@exhibitions = Exhibition.find(params[:user_id]).exhibitions
+			render json: @exhibitions
 		else
 			@exhibitions = Exhibition.all
+			render json: @exhibitions
 		end
 	end
 
 	def show
 		@exhibition = Exhibition.find_by(id: params[:id])
 		@rsvp = @exhibition.rsvps.build
+		render json: @exhibition
 		# @exhibition.dates
 	end
 
@@ -18,6 +21,7 @@ class ExhibitionsController < ApplicationController
 		@exhibition = Exhibition.new(author_id: current_user.id)
 		# @exhibition.addresses.build
 		@exhibition.dates
+		render json: @exhibition
 	end
 
 	def create
@@ -25,9 +29,11 @@ class ExhibitionsController < ApplicationController
 		# byebug
 		if @exhibition.save
 			# redirect_to user_exhibitions_path, :notice => "Your Exhibition was added."
-			redirect_to @exhibition, :notice => "Your Exhibition was added."
+			# redirect_to @exhibition, :notice => "Your Exhibition was added."
+			render json: @exhibition
 		else
-			render :new
+			# render :new
+			render json: @exhibition
 		end
 	end
 
@@ -48,6 +54,7 @@ class ExhibitionsController < ApplicationController
 		@exhibition = Exhibition.find_by(id: params[:id])
 		@exhibition.delete
 		redirect_to user_path(current_user), :notice => "Your Exhibition has been deleted."
+		render json: @exhibition
 	end
 
 	private
